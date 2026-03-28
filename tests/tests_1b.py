@@ -37,5 +37,15 @@ def test_invalid_operation():
     with pytest.raises(ValueError, match="Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'."):
         simple_calculator("", 5, 3)                     # Test for empty operation
 
+def test_invalid_input():
+    with pytest.raises(TypeError):
+        simple_calculator("add", "five", 3)            # Test for invalid number input
+    with pytest.raises(TypeError):
+        simple_calculator("subtract", 5, "three")      # Test for invalid number input
+
+def test_small_decimals():
+    assert simple_calculator("add", 0.65, 0.3) == pytest.approx(0.95)   # Test for small numbers
+    assert simple_calculator("multiply", 0.35, 0.95) == pytest.approx(0.3325)  # Test for multiplication of small numbers
+
 if __name__ == "__main__":
     pytest.main()
