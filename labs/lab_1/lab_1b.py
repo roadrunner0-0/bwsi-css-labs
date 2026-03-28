@@ -73,7 +73,7 @@ def main():
     
         main()  # Restart the main function to get valid input
     # Perform the calculation and display the result
-    else:
+    try:
         result = simple_calculator(operation, num1, num2)
         print(f"The result of {operation}ing {num1} and {num2} is: {result}")
         sys.exit(0)  # Exit the program after displaying the result
